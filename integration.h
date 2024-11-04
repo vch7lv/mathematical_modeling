@@ -38,7 +38,7 @@ vpairdd evenNet(int p, long double x1, long double x2) {
 // 	return x * x;
 
 namespace biv {
-	double computeMoment(double k, double a, double b);
+	double computeMoment(double k, double a, double b, long double x1, long double x2);
 	template <typename Number>
 	double computeIntegral(Matrix<Number> Mu, const vector<double>& nodes);
 	//template <typename Number>
@@ -60,7 +60,7 @@ namespace biv {
 		//cout << '\n';
 		Matrix<Number> Mu(nodes.size(), 1);
 		for (int i = 0; i < nodes.size(); i++)
-			Mu(i, 0) = computeMoment(i, a, b);
+			Mu(i, 0) = computeMoment(i, a, b, );
 		Matrix<Number> A(nodes.size(), nodes.size());
 		for (int i = 0; i < nodes.size(); i++)
 			for (int j = 0; j < nodes.size(); j++)

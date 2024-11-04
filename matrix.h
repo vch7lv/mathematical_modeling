@@ -119,7 +119,7 @@ namespace biv {
 			n = a.n;
 			m = a.m;
 			v = a.v;
-			return a;
+			return *this;
 		}
 
 		Matrix operator^(int k) {

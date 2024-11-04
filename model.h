@@ -11,7 +11,7 @@ using ld = long double;
 
 ld integrate(function<ld(ld)> fun, ld x1, ld x2) {
     ld result = biv::makeCompoundSF(x1, x2, fun);
-    
+    return result;
 }
 
 
