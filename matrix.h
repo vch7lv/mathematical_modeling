@@ -152,7 +152,8 @@ class Matrix {
 			*this = *this * a;
 			return *this;
 	}
-  */ Matrix transpose() {
+	*/
+	Matrix transpose() {
 		Matrix &a = *this;
 		Matrix b(a.m, a.n);
 		for (int i = 0; i < a.m; i++)
