@@ -21,7 +21,7 @@ struct Point
 struct Model
 {
     Model(
-        function<ld(ld,ld)> dzdx_, 
+        function<ld(ld,ld)> dzdx_,
         function<ld(ld,ld)> dzdy_, 
         function<ld(ld,ld)> beta_,
         ld alpha_,
@@ -29,7 +29,7 @@ struct Model
         );
 
 
-    void optimaze(size_t iter);
+    void optimize(size_t iter);
 
     //y = ax + b
     ld J();
