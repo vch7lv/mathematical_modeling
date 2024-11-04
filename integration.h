@@ -155,7 +155,6 @@ long double makeCompoundSF(
 		double XD = computeIntegral<double>(Ashki[i], nodes[i], func);
 		ans += XD;
 	}
-	std::cout << ans << "\n";
 	return ans;
 }
 
