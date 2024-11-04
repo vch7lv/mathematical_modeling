@@ -1,7 +1,12 @@
 #include "model.h"
+#include "integration.h"
 #include <cmath>
 
-
+ld integrate(function<ld(ld)> fun, ld x1, ld x2)
+{
+    ld result = biv::makeCompoundSF(x1, x2, fun);
+    return result;
+}
 
 Model::Model(
     function<ld(ld,ld)> dzdx_, 
@@ -35,7 +40,7 @@ void Model::optimaze(size_t iter)
             ld best_dy1 = 0;
             ld best_dy2 = 0;
 
-            ld J_best_local = 1/0;
+            ld J_best_local = (ld)1/0;
 
             for (ld dy1 = -dy; dy1 <= dy; dy1 += dy)
             for (ld dy2 = -dy; dy2 <= dy; dy2 += dy)
@@ -50,6 +55,8 @@ void Model::optimaze(size_t iter)
                 ld b = y1 + dy1 - a * x1;
 
                 ld J_cur = J(x1,x2,a,b);
+
+                cout << J_cur << '\n';
 
                 if (J_cur < J_best_local)
                 {
@@ -112,6 +119,6 @@ ld Model::J(ld x1, ld x2, ld a, ld b)
 }
 
 
-ld Model::dx {0.02};
-ld Model::dy {0.02};
+ld Model::dx {0.03};
+ld Model::dy {0.03};
 

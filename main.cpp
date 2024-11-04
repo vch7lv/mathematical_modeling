@@ -34,15 +34,15 @@ int main() {
     };
 
     Model model(dzdx, dzdy, beta, alpha, l);
-    model.optimaze(50);
+    model.optimaze(10);
 
     cout << "J value: " << model.J_total_value << '\n';
 
-    /*
-        y:
-        for (auto [x,y] : model.Points)
-        {
-            ...
-        }
-    */
+    
+        
+    for (auto [x,y] : model.Points)
+    {
+        cout << x << ' ' << y << '\n';
+    }
+    
 }
