@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <functional>
 #include <map>
 #include <vector>
@@ -10,44 +9,34 @@ using ld = long double;
 
 ld integrate(function<ld(ld)> fun, ld x1, ld x2);
 
-
-struct Point
-{
-    ld x;
-    ld y;
+struct Point {
+	ld x;
+	ld y;
 };
 
+struct Model {
+	Model(function<ld(ld, ld)> dzdx_, function<ld(ld, ld)> dzdy_,
+		  function<ld(ld, ld)> beta_, ld alpha_, ld l_);
 
-struct Model
-{
-    Model(
-        function<ld(ld,ld)> dzdx_,
-        function<ld(ld,ld)> dzdy_, 
-        function<ld(ld,ld)> beta_,
-        ld alpha_,
-        ld l_
-        );
+	void optimize(size_t iter);
 
+	// y = ax + b
+	ld J();
+	ld J(ld x1, ld x2, ld a, ld b);
 
-    void optimize(size_t iter);
+	// calculated y:
+	ld J_total_value = -1;
+	vector<Point> Points;
 
-    //y = ax + b
-    ld J();
-    ld J(ld x1, ld x2, ld a, ld b);
+	// task parameters
+	function<ld(ld, ld)> dzdx;
+	function<ld(ld, ld)> dzdy;
+	function<ld(ld, ld)> beta;
 
-    //calculated y:
-    ld J_total_value = -1;
-    vector<Point> Points;
+	ld alpha;
+	ld l;
 
-    //task parameters
-    function<ld(ld,ld)> dzdx;
-    function<ld(ld,ld)> dzdy;
-    function<ld(ld,ld)> beta; 
-
-    ld alpha;
-    ld l;
-
-    //method parameters
-    static ld dx;
-    static ld dy;
+	// method parameters
+	static ld dx;
+	static ld dy;
 };
