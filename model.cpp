@@ -1,5 +1,11 @@
-#include <model.h>
+#include "model.h"
 #include <cmath>
+
+
+ld integrate(function<ld(ld)> fun, ld x1, ld x2)
+{
+    return 1;
+}
 
 Model::Model(
     function<ld(ld,ld)> dzdx_, 
