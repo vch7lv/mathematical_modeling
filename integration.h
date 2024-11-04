@@ -38,7 +38,7 @@ vpairdd evenNet(int p, long double x1, long double x2) {
 // 	return x * x;
 
 namespace biv {
-	double computeMoment(double k, double a, double b, long double x1, long double x2);
+	double computeMoment(double k, double a, double b);
 	template <typename Number>
 	double computeIntegral(Matrix<Number> Mu, const vector<double>& nodes);
 	//template <typename Number>
@@ -60,11 +60,11 @@ namespace biv {
 		//cout << '\n';
 		Matrix<Number> Mu(nodes.size(), 1);
 		for (int i = 0; i < nodes.size(); i++)
-			Mu(i, 0) = computeMoment(i, a, b, );
+			Mu(i, 0) = computeMoment(i, a, b);
 		Matrix<Number> A(nodes.size(), nodes.size());
 		for (int i = 0; i < nodes.size(); i++)
 			for (int j = 0; j < nodes.size(); j++)
-				A(i, j) = pow(nodes[j] - a, i); //t = x-a   f(xj - a)
+				A(i, j) = pow(nodes[j], i); //t = x-a   f(xj - a)
 		Matrix<Number> Ashki = GaussSlau(A, Mu);
 		bool flag = false;
 		double Ashki_sum = 0, XD_A_sum = 0;
@@ -78,14 +78,13 @@ namespace biv {
 		//if (flag) cout << "\nthere is some negative A[i]!!!\n";
 		return Ashki;
 	}
-	double computeMoment(double k, double a, double b, long double x1, long double x2) {
+	double computeMoment(double k, double a, double b) {
 		double ans;
 		if (k == -1) {
 			ans = 1e9;
 		}else {
-			ans = pow((b - x1), k + 1);
-			ans /= k + 1;
-			ans -= pow((a - x1), k + 1)/(k+1);
+			ans = pow(b, k + 1) / (k + 1.);
+			ans -= pow(a, k + 1)/(k + 1.);
 		}
 		return ans;
 	}

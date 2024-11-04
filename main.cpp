@@ -6,10 +6,6 @@
 using std::cout;
 
 int main() {
-
-    double res = biv::makeCompoundSF(0, 1, [](long double x){ return x*x;});
-    std::cout << res << "\n";
-    return 0;
     ld alpha = 0.1;
     ld l = 1;
 
