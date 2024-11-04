@@ -38,6 +38,9 @@ void Model::optimaze(size_t iter)
             for (ld dy1 = -dy; dy1 <= dy; dy1 += dy)
             for (ld dy2 = -dy; dy2 <= dy; dy2 += dy)
             {
+                if (i == 0 && dy1 != 0) continue;
+                if (i == n-1 && dy2 != 0) continue;
+
                 auto [x1,y1] = Points[i];
                 auto [x2,y2] = Points[i+1];
 
@@ -107,6 +110,6 @@ ld Model::J(ld x1, ld x2, ld a, ld b)
 }
 
 
-ld Model::dx {0.01};
-ld Model::dy {0.01};
+ld Model::dx {0.02};
+ld Model::dy {0.02};
 
