@@ -1,4 +1,7 @@
 #pragma once
+#include "integration.h"
+
+
 #include <functional>
 #include <map>
 #include <vector>
@@ -6,7 +9,10 @@
 using std::function, std::map, std::vector;
 using ld = long double;
 
-ld integrate(function<ld(ld)> fun, ld x1, ld x2);
+ld integrate(function<ld(ld)> fun, ld x1, ld x2) {
+    ld result = biv::makeCompoundSF(x1, x2, fun);
+    
+}
 
 
 struct Point
