@@ -16,7 +16,7 @@ struct Point {
 
 struct Model {
 	Model(function<ld(ld, ld)> dzdx_, function<ld(ld, ld)> dzdy_,
-		  function<ld(ld, ld)> beta_, ld alpha_, ld l_);
+		  function<ld(ld)> y0, function<ld(ld, ld)> beta_, ld alpha_, ld l_);
 
 	void optimize(size_t iter);
 
@@ -32,6 +32,7 @@ struct Model {
 	function<ld(ld, ld)> dzdx;
 	function<ld(ld, ld)> dzdy;
 	function<ld(ld, ld)> beta;
+	function<ld(ld)> y0;
 
 	ld alpha;
 	ld l;
@@ -39,4 +40,5 @@ struct Model {
 	// method parameters
 	static ld dx;
 	static ld dy;
+	static int k;
 };
