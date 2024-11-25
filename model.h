@@ -5,7 +5,7 @@
 #include <vector>
 
 using std::function, std::map, std::vector;
-using ld = long double;
+using ld = double;
 
 ld integrate(function<ld(ld)> fun, ld x1, ld x2);
 
@@ -21,12 +21,14 @@ struct Model {
 	void optimize(size_t iter);
 
 	// y = ax + b
-	ld J();
-	ld J(ld x1, ld x2, ld a, ld b);
+	//ld J();
+	ld J(ld x1, ld x2, ld a, ld b, ld add);
+	ld helper (ld x1, ld x2, ld a, ld b);
 
 	// calculated y:
 	ld J_total_value = -1;
 	vector<Point> Points;
+	vector<ld> sumJ;
 
 	// task parameters
 	function<ld(ld, ld)> dzdx;
