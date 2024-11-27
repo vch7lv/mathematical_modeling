@@ -5,7 +5,7 @@
 
 #include "integration.h"
 
-#include "quadpackcpp/src/include/workspace.hpp"
+#include "integr/src/include/workspace.hpp"
 
 
 ld integrate(function<ld(ld)> fun, ld x1, ld x2) {
@@ -138,7 +138,7 @@ ld Model::helper(ld x1, ld x2, ld a, ld b) {
 	return integrate(f1,x1,x2);
 }
  
- 
+
 ld Model::J(ld x1, ld x2, ld a, ld b, ld add) {
 	function<ld(ld)> f1{
 		[a, b, dzdx = this->dzdx, dzdy = this->dzdy](ld x) -> ld {
