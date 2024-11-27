@@ -39,6 +39,7 @@ struct Model {
 	ld alpha;
 	ld l;
 
+
 	// method parameters
 	static ld dx;
 	static ld dy;

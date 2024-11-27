@@ -25,6 +25,7 @@ int main() {
 
 	model.optimize(10);
 
+
 	std::cerr << model.J_total_value << '\n';
 
 	for (auto [x, y] : model.Points) {

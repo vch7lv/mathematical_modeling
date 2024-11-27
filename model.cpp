@@ -137,7 +137,8 @@ ld Model::helper(ld x1, ld x2, ld a, ld b) {
 
 	return integrate(f1,x1,x2);
 }
-
+ 
+ 
 ld Model::J(ld x1, ld x2, ld a, ld b, ld add) {
 	function<ld(ld)> f1{
 		[a, b, dzdx = this->dzdx, dzdy = this->dzdy](ld x) -> ld {
